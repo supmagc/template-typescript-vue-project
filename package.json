@@ -1,0 +1,80 @@
+{
+    "name": "template-typescript-vue-frontend",
+    "version": "0.1.0",
+    "scripts": {
+        "server": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json webpack-dev-server --hot --config ./build/webpack.dev.ts",
+        "build:dev": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json webpack --config ./build/webpack.dev.ts",
+        "build:prod": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json webpack --config ./build/webpack.prod.ts",
+        "lint": "tsc --build build/tsconfig.tests.json && eslint --config build/eslintrc.js src/**/* tests/**/*",
+        "format": "prettier --write --config build/prettierrc.json src/**/* tests/**/*",
+        "test:once": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json ava --files tests/**/*.test.ts",
+        "test:watch": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json ava --source src/**/* --watch --files tests/**/*.test.ts",
+        "test:junit": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json ava --tap --files tests/**/*.test.ts | tap-junit --output ./",
+        "test:coverage": "cross-env TS_NODE_PROJECT=build\\tsconfig.node.json nyc --check-coverage --lines 100 --functions 100 --branches 100 --require ts-node/register --extension .ts --cache --include src/**/* yarn test:once"
+    },
+    "devDependencies": {
+        "@types/copy-webpack-plugin": "^5.0.0",
+        "@types/html-webpack-plugin": "^3.2.1",
+        "@types/mini-css-extract-plugin": "^0.9.0",
+        "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
+        "@types/terser-webpack-plugin": "^2.2.0",
+        "@types/webpack": "^4.41.0",
+        "@types/webpack-merge": "^4.1.5",
+        "@typescript-eslint/eslint-plugin": "^2.7.0",
+        "@typescript-eslint/parser": "^2.7.0",
+        "ava": "^2.4.0",
+        "case-sensitive-paths-webpack-plugin": "^2.2.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "cross-env": "^6.0.3",
+        "css-loader": "^3.4.0",
+        "eslint": "^6.6.0",
+        "eslint-config-prettier": "^6.5.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-vue": "^6.1.2",
+        "file-loader": "^5.0.2",
+        "html-webpack-plugin": "^3.2.0",
+        "imagemin": "^7.0.1",
+        "imagemin-gifsicle": "^6.0.1",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-pngquant": "^8.0.0",
+        "imagemin-svgo": "^7.0.0",
+        "img-loader": "^3.0.1",
+        "mini-css-extract-plugin": "^0.9.0",
+        "node-sass": "^4.13.0",
+        "npm-run-all": "^4.1.5",
+        "nyc": "^14.1.1",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "prettier": "^1.19.1",
+        "sass-loader": "^8.0.0",
+        "tap-junit": "^3.1.0",
+        "terser-webpack-plugin": "^2.3.1",
+        "ts-loader": "^6.2.1",
+        "ts-node": "^8.5.0",
+        "typescript": "^3.7.2",
+        "url-loader": "^3.0.0",
+        "vue-eslint-parser": "^7.0.0",
+        "vue-loader": "^15.8.3",
+        "vue-template-compiler": "^2.6.11",
+        "webpack": "^4.41.4",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.10.1",
+        "webpack-merge": "^4.2.2"
+    },
+    "dependencies": {
+        "core-js": "^3.6.1",
+        "intl": "^1.2.5",
+        "vue": "^2.6.11",
+        "vue-property-decorator": "^8.3.0",
+        "whatwg-fetch": "^3.0.0"
+    },
+    "ava": {
+        "compileEnhancements": false,
+        "extensions": [
+            "ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ]
+    }
+}

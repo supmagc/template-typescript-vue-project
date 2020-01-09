@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs"
+    },
+    "include": ["../src/**/*", "./types/**/*", "./**/*.ts"],
+    "exclude": ["node_modules"]
+}
